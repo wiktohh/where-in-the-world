@@ -1,9 +1,23 @@
+export interface Country{
+    flag: string,
+    name: string,
+    population: number,
+    region: string,
+    capital: string | null
+}
+
 export interface IHome{
-    data: {
-        flag: string,
-        name: string,
-        population: number,
-        region: string,
-        capital: string | null
-    }
+    data: Country[]
+}
+
+export interface ICountryList{
+    countries: Country[]
+}
+
+export interface ICountry{
+    name:string,
+    population:number,
+    flag: string,
+    region: string,
+    capital: string | null
 }

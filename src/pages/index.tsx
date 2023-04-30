@@ -1,18 +1,16 @@
 import Head from 'next/head'
+import { useState } from 'react'
 
 import Header from '@/components/Header'
-import { useState } from 'react'
+import CountryList from '@/components/CountryList'
 
 import {Country} from "../types/Country"
 import {IHome} from "../types/types"
-import { count } from 'console'
 
 
 export default function Home({data}:IHome) {
 
-
   const [countries, setCountries] = useState(data)
-  console.log(countries);
 
   return (
     <>
@@ -24,13 +22,14 @@ export default function Home({data}:IHome) {
       </Head>
       <main>
         <Header/>
+        <CountryList countries={countries}/>
       </main>
     </>
   )
 }
 
 export const getStaticProps = async() => {
-  let countries;
+  let countries
   const API_URL = "https://restcountries.com/v3.1/all"
   const res = await fetch(API_URL)
   const data = await res.json() as Country[]

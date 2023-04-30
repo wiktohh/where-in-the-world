@@ -1,2 +1,27 @@
 @import '_header.scss';
-@import '_country-list.scss'
+@import '_country-list.scss';
+@import '_country.scss';
+@import 'colors.scss';
+
+main{
+    width:100vw;
+    background: $light-mode-bg;
+    .filter{
+        width:90%;
+        margin: auto;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        .input{
+            background: white;
+            width: fit-content;
+            box-shadow: 0px 0px 23px -14px rgba(66, 68, 90, 1);
+            input{
+                padding: 1rem 2rem;
+                border:none; outline: none;
+            }
+        }
+    }
+}
+

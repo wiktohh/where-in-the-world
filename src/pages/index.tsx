@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import Header from '@/components/Header'
 import CountryList from '@/components/CountryList'
@@ -11,6 +11,16 @@ import {IHome} from "../types/types"
 export default function Home({data}:IHome) {
 
   const [countries, setCountries] = useState(data)
+  const [inputValue, setInputValue] = useState<string>("")
+  const [selectValue, setSelectValue] = useState<string>("")
+
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value)
+  }
+
+  const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectValue(e.target.value)
+  }
 
   return (
     <>
@@ -22,7 +32,18 @@ export default function Home({data}:IHome) {
       </Head>
       <main>
         <Header/>
-        <CountryList countries={countries}/>
+        <div className="filter">
+          <div className="input">Lupa<input type="text" placeholder='Search for a country' value={inputValue} onChange={handleInput} /></div>
+          <select value={selectValue} onChange={handleSelect}>
+            <option value="">Default</option>
+            <option value="Africa">Africa</option>
+            <option value="America">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+        </div>
+        <CountryList countries={countries.filter(country => country.name.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase()) && country.region.toLocaleLowerCase().includes(selectValue.toLocaleLowerCase()))}/>
       </main>
     </>
   )

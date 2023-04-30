@@ -1,8 +1,17 @@
+@import 'colors.scss';
+
 .country-list{
-    width:90%;
-    margin: 0 auto;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    align-items: center;
+    background: $light-mode-bg;
+    width:100vw;
+
+
+    &__container{
+        width:90%;
+        margin: 0 auto;
+        display:flex;
+        flex-wrap:wrap;
+        gap:3rem;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

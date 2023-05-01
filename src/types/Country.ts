@@ -18,6 +18,7 @@ export interface Country {
     latlng:       number[];
     landlocked:   boolean;
     area:         number;
+    borders:      string[];
     demonyms:     Demonyms;
     flag:         string;
     maps:         Maps;

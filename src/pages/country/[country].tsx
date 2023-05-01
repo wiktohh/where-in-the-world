@@ -23,7 +23,8 @@ const fetchData = async (countryName: string) => {
       subregion: country.subregion,
       currencies: Object.values(country.currencies).map(currency => currency.name).join(", "),
       languages: Object.values(country.languages).join(", "),
-      tld: country.tld[0]
+      tld: country.tld[0],
+      borders: country.borders,
 
     }
   })
@@ -59,7 +60,7 @@ const CountryWebsite = () => {
             <img src={countryData?.flag} alt="country flag" />
           </div>
           <div>
-            <h3>{}</h3>
+            <h3>{countryData?.name}</h3>
             <div className="info">
               <p><span>Native name: </span>{countryData?.nativeName}</p>
               <p><span>Top Level Domain: </span>{countryData?.tld}</p>
@@ -69,6 +70,9 @@ const CountryWebsite = () => {
               <p><span>Languages: </span>{countryData?.languages}</p>
               <p><span>Sub Region: </span>{countryData?.region}</p>
               <p><span>Capital: </span>{countryData?.capital}</p>
+            </div>
+            <div className="borders">
+              {countryData?.borders.map(border => <div>{border}</div>)}
             </div>
           </div>
         </div>

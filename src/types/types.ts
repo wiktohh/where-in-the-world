@@ -32,5 +32,6 @@ export interface IDetal{
       subregion: string,
       currencies: string,
       languages: string,
-      tld: string
+      tld: string,
+      borders: Array<string>
 }

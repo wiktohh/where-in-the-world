@@ -2,8 +2,8 @@
 
 .header {
     width: 100vw;
-    height: 5rem;
-    background: white;
+    height: 10vh;
+    display:flex;
   
     &__container {
       width: 90%;
@@ -18,8 +18,23 @@
   
       &-switch-button {
         height: fit-content;
+        background-color: inherit;
+        outline: none; border: none;
+        font-size:20px;
         padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
+      .header__container-switch-button-dark{
+        color:white;
       }
     }
+  }
+  .header-light{
+    background: white;
+  }
+
+  .header-dark{
+    background: $dark-mode-elements;
+    color: white;
   }
   

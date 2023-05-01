@@ -1,3 +1,4 @@
+@import 'reset.scss';
 @import '_header.scss';
 @import '_country-list.scss';
 @import '_country.scss';
@@ -11,7 +12,6 @@
 
 main{
     width:100vw;
-    background: $light-mode-bg;
     .filter{
         width:90%;
         margin: 2rem auto;
@@ -25,23 +25,39 @@ main{
         align-items: center;
         
         .input{
-        
-            background: white;
+            height: 100%;
             width: 20%;
             box-shadow: 0px 0px 23px -14px rgba(66, 68, 90, 1);
             display:flex;
+            align-items: center;
             .icon{
-                margin-left:.5rem;
-                width: 8%;
+                padding: .5rem;
+                width: 7%;
+                height: 100%;
+                
             }
             input{
                 width: 95%;
                 padding: 1rem 1rem;
                 border:none; outline: none;
             }
+            .inputForm-dark{
+                background-color: $dark-mode-elements;
+                color:white;
+            }
+            .inputForm-dark::placeholder{
+                color:white;
+            }
             @media screen and (max-width:768px) {
                 margin-bottom: 1rem;
             }
+        }
+        .input-dark{
+            color:white;
+            background-color: $dark-mode-elements;
+        }
+        .input-light{
+            background-color: $light-mode-bg;
         }
         select {
             font-size: 16px;
@@ -50,6 +66,11 @@ main{
             border-radius: 5px;
             background-color: #fff;
             color: #555;
+        }
+        .select-dark{
+            background-color: $dark-mode-elements;
+            color:white;
+            border:none;
         }
 
         select:focus {
@@ -61,5 +82,11 @@ main{
         border-color: #999;
         }
     }
+}
+.main-light{
+    background-color: $light-mode-bg;
+}
+.main-dark{
+    background-color: $dark-mode-bg;
 }
 

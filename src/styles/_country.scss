@@ -13,7 +13,6 @@
     &__info{
         width:100%;
         padding: 2rem 0;
-        background: $light-mode-elements;
         
         h3{
             margin-top:0;
@@ -27,5 +26,12 @@
                 font-weight: 600;
             }
         }
+    }
+    &__info-light{
+        background: $light-mode-elements;
+    }
+    &__info-dark{
+        background: $dark-mode-elements;
+        color:white;
     }
 }

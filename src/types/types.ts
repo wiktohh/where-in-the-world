@@ -10,6 +10,10 @@ export interface IHome{
     data: Country[]
 }
 
+export interface IHeader{
+    handleTheme: Function
+}
+
 export interface ICountryList{
     countries: Country[]
 }

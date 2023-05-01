@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 
 import Header from '@/components/Header'
 import CountryList from '@/components/CountryList'
@@ -9,6 +9,7 @@ import {IHome} from "../types/types"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { ThemeContext } from '@/context/ThemeContext'
 
 
 export default function Home({data}:IHome) {
@@ -16,6 +17,9 @@ export default function Home({data}:IHome) {
   const [countries, setCountries] = useState(data)
   const [inputValue, setInputValue] = useState<string>("")
   const [selectValue, setSelectValue] = useState<string>("")
+
+  const themeColor = useContext(ThemeContext)
+  const [theme, setTheme] = useState(themeColor)
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
@@ -25,6 +29,13 @@ export default function Home({data}:IHome) {
     setSelectValue(e.target.value)
   }
 
+  const handleTheme = () => {
+    const themeChange = theme == "light" ? "dark" : "light";
+    setTheme(themeChange)
+  }
+
+  console.log(theme);
+
   return (
     <>
       <Head>
@@ -33,11 +44,12 @@ export default function Home({data}:IHome) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <Header/>
-        <div className="filter">
-          <div className="input"><FontAwesomeIcon className="icon" icon={faSearch} /><input type="text" placeholder='Search for a country' value={inputValue} onChange={handleInput} /></div>
-          <select value={selectValue} onChange={handleSelect}>
+      <ThemeContext.Provider value={theme}>
+      <main className={`main-${theme}`}>
+        <Header handleTheme={handleTheme}/>
+        <div className={`filter`}>
+          <div className={`input input-${theme}`}><FontAwesomeIcon className={`icon input-${theme}`} icon={faSearch} /><input type="text" className={`inputForm-${theme}`} placeholder='Search for a country' value={inputValue} onChange={handleInput} /></div>
+          <select className={`select-${theme}`} value={selectValue} onChange={handleSelect}>
             <option value="">Default</option>
             <option value="Africa">Africa</option>
             <option value="America">America</option>
@@ -48,6 +60,7 @@ export default function Home({data}:IHome) {
         </div>
         <CountryList countries={countries.filter(country => country.name.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase()) && country.region.toLocaleLowerCase().includes(selectValue.toLocaleLowerCase()))}/>
       </main>
+      </ThemeContext.Provider>
     </>
   )
 }

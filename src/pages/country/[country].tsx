@@ -1,9 +1,12 @@
 import Header from "@/components/Header";
 import { useRouter } from "next/router";
-import Link from 'next/link';
 import { Country } from "@/types/Country";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IDetal } from "@/types/types";
+import { ThemeContext } from "@/context/ThemeContext";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const fetchData = async (countryName: string) => {
   let countries;
@@ -35,6 +38,7 @@ const fetchData = async (countryName: string) => {
 const CountryWebsite = () => {
   const router = useRouter()
   const countryName = router.query.country;
+  const themeColor = useContext(ThemeContext)
   
   const [countryData, setCountryData] = useState<IDetal>();
   
@@ -53,20 +57,26 @@ const CountryWebsite = () => {
     getData()
   },[countryName])
 
-  console.log(countryData);
+  const handleTheme = () => {
+    const themeChange = theme == "light" ? "dark" : "light";
+    setTheme(themeChange)
+  }
 
+  console.log(countryData);
+  const [theme, setTheme] = useState(themeColor)
     return ( 
-      <>
-        <Header/>
+      <div className={`${theme}`}>
+      <ThemeContext.Provider value={theme}>
+        <Header handleTheme={handleTheme}/>
         <div className="container">
-        <div onClick={handleBackButton}className="back">Back</div>
+        <div onClick={handleBackButton}className={`back back-${theme}`}><FontAwesomeIcon icon={faArrowLeft} /><span>Back</span></div>
         <div className="main">
           <div className="flag">
             <img src={countryData?.flag} alt="country flag" />
           </div>
-          <div className="info">
+          <div className={`info info-${theme}`}>
             <h3>{countryData?.name}</h3>
-            <div className="info-items">
+            <div className={`info-items info-items-${theme}`}>
               <p><span>Native name: </span>{countryData?.nativeName}</p>
               <p><span>Top Level Domain: </span>{countryData?.tld}</p>
               <p><span>Population: </span>{countryData?.population}</p>
@@ -76,13 +86,14 @@ const CountryWebsite = () => {
               <p><span>Sub Region: </span>{countryData?.region}</p>
               <p><span>Capital: </span>{countryData?.capital}</p>
             </div>
-            <div className="borders">
+            <div className={`borders`}>
               Border Countries: {countryData?.borders ? countryData?.borders.map(border => <div>{border}</div>) : <div>None</div>}
             </div>
           </div>
         </div>
       </div>
-      </>
+      </ThemeContext.Provider>
+      </div>
      );
 }
  

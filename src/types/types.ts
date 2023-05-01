@@ -21,3 +21,16 @@ export interface ICountry{
     region: string,
     capital: string | null
 }
+
+export interface IDetal{
+    flag: string,
+      name: string,
+      population: number,
+      region: string,
+      capital: string | null,
+      nativeName: string,
+      subregion: string,
+      currencies: string,
+      languages: string,
+      tld: string
+}

@@ -2,6 +2,11 @@
 @import '_country-list.scss';
 @import '_country.scss';
 @import 'colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+*{
+    font-family: "Nunito Sans", sans-serif;
+}
 
 main{
     width:100vw;
@@ -19,11 +24,18 @@ main{
         align-items: center;
         
         .input{
+        
             background: white;
-            width: fit-content;
+            width: 20%;
             box-shadow: 0px 0px 23px -14px rgba(66, 68, 90, 1);
+            display:flex;
+            .icon{
+                margin-left:.5rem;
+                width: 8%;
+            }
             input{
-                padding: 1rem 2rem;
+                width: 95%;
+                padding: 1rem 1rem;
                 border:none; outline: none;
             }
             @media screen and (max-width:768px) {

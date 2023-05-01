@@ -7,6 +7,9 @@ import CountryList from '@/components/CountryList'
 import {Country} from "../types/Country"
 import {IHome} from "../types/types"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function Home({data}:IHome) {
 
@@ -33,7 +36,7 @@ export default function Home({data}:IHome) {
       <main>
         <Header/>
         <div className="filter">
-          <div className="input">Lupa<input type="text" placeholder='Search for a country' value={inputValue} onChange={handleInput} /></div>
+          <div className="input"><FontAwesomeIcon className="icon" icon={faSearch} /><input type="text" placeholder='Search for a country' value={inputValue} onChange={handleInput} /></div>
           <select value={selectValue} onChange={handleSelect}>
             <option value="">Default</option>
             <option value="Africa">Africa</option>

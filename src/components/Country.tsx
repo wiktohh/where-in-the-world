@@ -1,8 +1,16 @@
 import { ICountry } from "@/types/types";
+import { useRouter } from "next/router";
 
 const Country = ({name, population, flag, region, capital}: ICountry) => {
+    const router = useRouter()
+
+
+    const handleClick = () => {
+        router.push(`/country/${name.toLocaleLowerCase()}`)
+    }
+
     return ( 
-        <div className="country">
+        <div className="country" onClick={handleClick}>
             <div className="country__flag"><img src={flag}></img></div>
             <div className="country__info">
                 <h3>{name}</h3>

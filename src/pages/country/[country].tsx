@@ -37,6 +37,10 @@ const CountryWebsite = () => {
   const countryName = router.query.country;
   
   const [countryData, setCountryData] = useState<IDetal>();
+  
+  const handleBackButton = () => {
+    router.push("/")
+  }
 
   useEffect(() => {
     const getData = async() => {
@@ -52,16 +56,17 @@ const CountryWebsite = () => {
   console.log(countryData);
 
     return ( 
-      <div>
+      <>
         <Header/>
-        <Link href="/"><div>Back</div></Link>
-        <div>
+        <div className="container">
+        <div onClick={handleBackButton}className="back">Back</div>
+        <div className="main">
           <div className="flag">
             <img src={countryData?.flag} alt="country flag" />
           </div>
-          <div>
+          <div className="info">
             <h3>{countryData?.name}</h3>
-            <div className="info">
+            <div className="info-items">
               <p><span>Native name: </span>{countryData?.nativeName}</p>
               <p><span>Top Level Domain: </span>{countryData?.tld}</p>
               <p><span>Population: </span>{countryData?.population}</p>
@@ -72,11 +77,12 @@ const CountryWebsite = () => {
               <p><span>Capital: </span>{countryData?.capital}</p>
             </div>
             <div className="borders">
-              {countryData?.borders.map(border => <div>{border}</div>)}
+              Border Countries: {countryData?.borders ? countryData?.borders.map(border => <div>{border}</div>) : <div>None</div>}
             </div>
           </div>
         </div>
       </div>
+      </>
      );
 }
  

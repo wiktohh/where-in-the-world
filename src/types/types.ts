@@ -33,5 +33,5 @@ export interface IDetal{
       currencies: string,
       languages: string,
       tld: string,
-      borders: Array<string>
+      borders: Array<string> | null
 }

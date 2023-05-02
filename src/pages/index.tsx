@@ -48,7 +48,7 @@ export default function Home({data}:IHome) {
       <main className={`main-${theme}`}>
         <Header handleTheme={handleTheme}/>
         <div className={`filter`}>
-          <div className={`input input-${theme}`}><FontAwesomeIcon className={`icon input-${theme}`} icon={faSearch} /><input type="text" className={`inputForm-${theme}`} placeholder='Search for a country' value={inputValue} onChange={handleInput} /></div>
+          <div className={`input input-${theme}`}><FontAwesomeIcon className={`icon icon-${theme}`} icon={faSearch} /><input type="text" className={`inputForm-${theme}`} placeholder='Search for a country' value={inputValue} onChange={handleInput} /></div>
           <select className={`select-${theme}`} value={selectValue} onChange={handleSelect}>
             <option value="">Default</option>
             <option value="Africa">Africa</option>

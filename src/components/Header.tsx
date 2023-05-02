@@ -20,7 +20,7 @@ const Header = ({handleTheme}: IHeader) => {
             <div className="header__container">
                 <h1 className="header__container-h1">Where in the world?</h1>
                 <button onClick={handleSwitchButtonClick} className={`header__container-switch-button header__container-switch-button-${theme}`}>
-                <FontAwesomeIcon icon={faMoon} /> Dark mode
+                <FontAwesomeIcon className="icon" icon={faMoon} /> Dark mode
                 </button>
             </div>
         </header>

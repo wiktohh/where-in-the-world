@@ -17,12 +17,20 @@
       }
   
       &-switch-button {
-        height: fit-content;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: fit-content;
         background-color: inherit;
         outline: none; border: none;
         font-size:20px;
         padding: 0.5rem 1rem;
         cursor: pointer;
+
+        .icon{
+          width:6%;
+          padding-right: .5rem;
+        }
       }
       .header__container-switch-button-dark{
         color:white;

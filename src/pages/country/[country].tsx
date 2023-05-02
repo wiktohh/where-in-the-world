@@ -69,7 +69,7 @@ const CountryWebsite = () => {
       <ThemeContext.Provider value={theme}>
         <Header handleTheme={handleTheme}/>
         <div className="container">
-        <div onClick={handleBackButton}className={`back back-${theme}`}><FontAwesomeIcon icon={faArrowLeft} /><span>Back</span></div>
+        <div onClick={handleBackButton}className={`back back-${theme}`}><FontAwesomeIcon className="icon" icon={faArrowLeft} /><span>Back</span></div>
         <div className="main">
           <div className="flag">
             <img src={countryData?.flag} alt="country flag" />
